@@ -1,3 +1,3 @@
 const models = require('../models');
-const db = require('../config/connection');
+const db = require('./connection');
 
