@@ -1,9 +1,11 @@
+
 const { User, MemeCreation, Comment, Likes } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
     Query: {
         users: async () => {
+
             return User.find().populate('comments'); 
         },
         userInfo: async (parent, { username }) => {
@@ -52,6 +54,7 @@ const resolvers = {
 
             return { token, user };
         },
+
         createComment: async (parent, { memeId, text }, context) => { 
             if (context.user) {
                 const comment = await Comment.create({
@@ -122,3 +125,4 @@ const resolvers = {
         },
     }
 }
+module.exports = resolvers;
