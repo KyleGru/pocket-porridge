@@ -6,8 +6,8 @@
     "scripts": {
       "start": "node server/server.js",
       "develop": "concurrently \"cd server && npm run watch\" \"cd Pocket Porridge && npm run dev\"",
-      "install": "cd server && npm i && cd ../client && npm i",
-      "build": "cd client && npm run build",
+      "install": "cd server && npm i && cd ../Pocket Porridge && npm i",
+      "build": "cd Pocket Porridge && npm run build",
       "render-build":"npm install && npm run build"
     },
     "keywords": [],
