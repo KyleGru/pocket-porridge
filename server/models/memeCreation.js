@@ -19,7 +19,8 @@ const memeCreationSchema = new Schema(
         description: String,
         createdAt: {
             type: Date,
-            default: Date.now
+            default: Date.now,
+            get: (timestamp) => dateFormat(timestamp),
         },
         likes: {
             type: Schema.Types.ObjectId,
