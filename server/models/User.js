@@ -18,6 +18,7 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         unique: true
+        // @TODO: add validation to ensure bad email addressed don't end up in the database if your front-end validation fails https://gist.github.com/rupeshtiwari/acf770bfc85f3fe1f62a80b461abfc13
     },
     password: {
         type: String,
