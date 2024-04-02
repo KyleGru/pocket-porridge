@@ -5,6 +5,7 @@ const typeDefs = `
     lastName: String!
     email: String!
     password: String!
+    comments: [Comment]
   }
 
   type MemeTemplate {
@@ -20,6 +21,8 @@ const typeDefs = `
     title: String!
     description: String!
     createdAt: Date!
+    likes: [Likes]
+    comments: [Comment]
   }
 
   type Comment {
