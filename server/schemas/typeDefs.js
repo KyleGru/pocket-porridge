@@ -20,7 +20,7 @@ const typeDefs = `
     template: MemeTemplate!
     title: String!
     description: String!
-    createdAt: Date!
+    createdAt: String!
     likes: [Likes]
     comments: [Comment]
   }
@@ -29,7 +29,8 @@ const typeDefs = `
     user: User!
     meme: MemeCreation!
     text: String!
-    createdAt: Date!
+    createdAt: String!
+    
   }
 
   type Likes {
