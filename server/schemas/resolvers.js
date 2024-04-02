@@ -1,18 +1,18 @@
 
-const { User, memeCreation, Comment, Likes } = require('../models');
+const { User, memeTemplate, Comment, memeCreation, Likes } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        users: async () => {
+        user: async () => {
 
             return User.find().populate('comments'); 
         },
-        userInfo: async (parent, { username }) => {
-            return User.findOne({ username }).populate('comments'); 
-        },
+        // userInfo: async (parent, { username }) => {
+        //     return User.findOne({ username }).populate('comments'); 
+        // },
         memes: async () => {
-            return memeCreation.find().populate('comments').populate('likes'); 
+            return memeTemplate.find().populate('comments').populate('likes'); 
         },
         meme: async (parent, { id }) => {
             return memeCreation.findById(id).populate('comments').populate('likes'); 
@@ -102,7 +102,7 @@ const resolvers = {
         },
         deleteMeme: async (parent, { memeId }, context) => {
             if (context.user) {
-                const meme = await MemeCreation.findOneAndDelete({
+                const meme = await memeCreation.findOneAndDelete({
                     _id: memeId,
                     user: context.user._id, 
                 });
@@ -113,7 +113,7 @@ const resolvers = {
         },
         updateMeme: async (parent, { memeId, title, description, imageUrl }, context) => {
             if (context.user) {
-                const updatedMeme = await MemeCreation.findOneAndUpdate(
+                const updatedMeme = await memeCreation.findOneAndUpdate(
                     { _id: memeId, user: context.user._id }, 
                     { title, description, imageUrl },
                     { new: true }

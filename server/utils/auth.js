@@ -1,9 +1,6 @@
 const { GraphQLError } = require('graphql');
 const jwt = require('jsonwebtoken');
 
-const secret = 'mysecrets';
-const expiration = '3h';
-
 module.exports = {
     AuthenticationError: new GraphQLError('You must be logged in to do that.', {
         extensions: {
