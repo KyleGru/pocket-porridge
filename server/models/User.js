@@ -23,8 +23,20 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         minlength: 5
+    },
+    comments: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Comment'
+        }
+    ]
+},
+    {
+        toJSON: {
+            virtuals: true,
+        }
     }
-});
+);
 
 
 // Pre-save middleware to hash password
