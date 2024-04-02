@@ -21,7 +21,7 @@ const memeCreationSchema = new Schema(
             default: Date.now
         },
         likes: {
-            thye: Schema.Types.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: 'Likes'
         },
         comments: {
