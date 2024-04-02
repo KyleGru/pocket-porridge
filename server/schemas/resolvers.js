@@ -1,5 +1,5 @@
 
-const { User, MemeCreation, Comment, Likes } = require('../models');
+const { User, memeCreation, Comment, Likes } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -12,10 +12,10 @@ const resolvers = {
             return User.findOne({ username }).populate('comments'); 
         },
         memes: async () => {
-            return MemeCreation.find().populate('comments').populate('likes'); 
+            return memeCreation.find().populate('comments').populate('likes'); 
         },
         meme: async (parent, { id }) => {
-            return MemeCreation.findById(id).populate('comments').populate('likes'); 
+            return memeCreation.findById(id).populate('comments').populate('likes'); 
         },
         comments: async () => {
             return Comment.find().populate('user').populate('meme'); 

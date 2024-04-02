@@ -18,7 +18,7 @@ const memeCreationSchema = new Schema(
         description: String,
         createdAt: {
             type: Date,
-            default: Date.now
+            default: Date.now,
         },
         likes: {
             type: Schema.Types.ObjectId,
@@ -31,6 +31,6 @@ const memeCreationSchema = new Schema(
     }
 );
 
-const MemeCreation = model('MemeCreation', memeCreationSchema);
+const memeCreation = model('MemeCreation', memeCreationSchema);
 
-module.exports = MemeCreation;
+module.exports = memeCreation;
