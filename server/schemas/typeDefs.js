@@ -30,6 +30,7 @@ const typeDefs = `
     meme: MemeCreation!
     text: String!
     createdAt: String!
+    
   }
 
   type Likes {
@@ -37,8 +38,14 @@ const typeDefs = `
     meme: MemeCreation!
   }
 
+  type Auth {
+    token: ID!
+    user: User
+  }
+
   type Query {
     me: User
+    users: [User]!
     user(id: ID!): User
     memes: [MemeCreation]
     meme(id: ID!): MemeCreation
