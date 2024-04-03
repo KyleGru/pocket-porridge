@@ -32,7 +32,7 @@ const startApolloServer = async () => {
     }
 
     app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+        res.sendFile(path.join(__dirname, '../PocketPorridge/dist/index.html'));
     });
 
     db.once('open', () => {
