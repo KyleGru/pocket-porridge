@@ -1,6 +1,8 @@
 const { GraphQLError } = require('graphql');
 const jwt = require('jsonwebtoken');
 
+// @TODO: Secret is gonna yell about being undefined. Defined secret here like in instructor excercises (but make it something different). Ideally, the JWT secret should come from process.env.JWT_SCECRET
+
 module.exports = {
     AuthenticationError: new GraphQLError('You must be logged in to do that.', {
         extensions: {

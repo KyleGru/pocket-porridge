@@ -1,3 +1,7 @@
+# TODO: Please add instructions for your group on how to run this project. Please also include instructions to "be sure to do a git pull and npm install" before the instructions for starting the project
+
+
+
 # pocket-porridge
 
 ## Description

@@ -1,18 +1,20 @@
 const { Schema, model } = require('mongoose');
 
-const Likes = new Schema(
+const Like = new Schema(
     {
         user: {
             type: Schema.Types.ObjectId,
             ref: 'User'
+            // @TODO: Required in your graphQL schema/typedefs, so should be required here/ Try and ensure those match
         },
         meme: {
             type: Schema.Types.ObjectId,
             ref: 'MemeCreation'
+            // @TODO: Required in your graphQL schema/typedefs, so should be required here/ Try and ensure those match
         }
     }
 );
 
-const LikesModel = model('Likes', Likes);
+const LikeModel = model('Like', Like);
 
-module.exports = LikesModel;
+module.exports = LikeModel;

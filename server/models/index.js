@@ -1,8 +1,8 @@
 const User = require ('./User');
-const Comment = require('./comment');
-const Likes = require('./likes');
+const Comment = require('./Comment');
+const Likes = require('./Likes');
 
-const memeCreation = require('./memeCreation');
-const memeTemplate = require('./memeTemplate');
+const memeCreation = require('./MemeCreation');
+const memeTemplate = require('./MemeTemplate');
 
 module.exports = { User, Comment, Likes, memeCreation, memeTemplate };
