@@ -2,7 +2,7 @@ const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
-const { start } = require('repl'); // @NOTE: Moved because you should prefer to import 3rd party packaged before files you wrote. This ensures that your code overwrite anything 3rd party and not the other way around
+const { start } = require('repl');
 const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
@@ -27,7 +27,7 @@ const startApolloServer = async () => {
     );
 
     if (process.env.NODE_ENV === 'production') {
-        app.use(express.static(path.join(__dirname, '../client/build')));
+        app.use(express.static(path.join(__dirname, '../PocketPorridge/dist')));
     }
 
     app.get('*', (req, res) => {

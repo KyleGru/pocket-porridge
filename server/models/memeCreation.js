@@ -9,8 +9,8 @@ const memeCreationSchema = new Schema(
         },
         template: {
             type: Schema.Types.ObjectId,
-            ref: 'MemeTemplate'
-            // @TODO: Required in your graphQL schema/typedefs, so should be required here/ Try and ensure those match
+            ref: 'MemeTemplate',
+            required: true,
         },
         title: {
             type: String,
@@ -23,8 +23,8 @@ const memeCreationSchema = new Schema(
         },
         likes: {
             type: Schema.Types.ObjectId,
-            ref: 'Like'
-            // @TODO: Might need to make this an array of likes and I changed ref from Likes to Like in support of the singluar model name
+            ref: 'Like',
+            required: true,
         },
         comments: {
             type: Schema.Types.ObjectId,
