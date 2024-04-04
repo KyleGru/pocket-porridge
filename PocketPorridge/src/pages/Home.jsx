@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+// import { Row, Col } from 'react-bootstrap';
+
+
 
 
 export default function Home() {
@@ -19,11 +22,20 @@ export default function Home() {
     }, [])
 
     return (
-        <div>
-            <h1>Popular Memes</h1>
-            <div>
+        <div className="container">
+            <h1 className="my-4">Popular Memes</h1>
+            <div className="row row-cols-1 row-cols-md-4 g-4">
                 {memes.map((meme, index) => (
-                <img key={index} src={meme.url} alt={meme.name} />))}
+                    <div key={index} className="col">
+                        <div className="card">
+                            <img
+                                src={meme.url}
+                                alt={meme.name}
+                                className="card-img-top meme-image"
+                            />
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );
