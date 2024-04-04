@@ -12,14 +12,14 @@ export function PorridgeNavbar() {
     <>
     <header>
     <Navbar bg="primary" data-bs-theme="dark">
-        <Container className="logoLeft">
+        <Container className="logoLeft navFlexAdjust">
           <Navbar.Brand href="#home">
             <Logo />
             </Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+          <Nav className="navLinkFlex">
+            <Nav.Link href="#home">Chat</Nav.Link>
+            <Nav.Link href="#features">Search</Nav.Link>
+            <Nav.Link href="#pricing">Create Meme</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

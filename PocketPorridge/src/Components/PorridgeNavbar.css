@@ -3,3 +3,12 @@
   margin-right: 0% !important;
 }
 
+.navFlexAdjust {
+  min-width: 100% !important;
+}
+
+.navLinkFlex {
+  flex-basis: 20%;
+  flex-direction: row;
+    gap: 15%;
+}
