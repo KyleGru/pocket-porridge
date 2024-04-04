@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 
+const emailRegex = [/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 'Please enter a valid email']
+
 const UserSchema = new Schema({
     firstName: {
         type: String,
@@ -17,8 +19,9 @@ const UserSchema = new Schema({
     email: {
         type: String,
         required: true,
-        unique: true
-        // @TODO: add validation to ensure bad email addressed don't end up in the database if your front-end validation fails https://gist.github.com/rupeshtiwari/acf770bfc85f3fe1f62a80b461abfc13
+        unique: true,
+        match: emailRegex,
+        
     },
     password: {
         type: String,

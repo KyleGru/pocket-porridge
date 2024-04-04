@@ -11,8 +11,8 @@ const memeTemplateSchema = new Schema(
             required: true,
         },
         imageUrl: {
-            type: String
-            // @TODO: this is required in your GraphQL schema, so it should be required here. Try and ensure those match
+            type: String,
+            required: true,
         }
     }
 );

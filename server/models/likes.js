@@ -4,13 +4,13 @@ const Like = new Schema(
     {
         user: {
             type: Schema.Types.ObjectId,
-            ref: 'User'
-            // @TODO: Required in your graphQL schema/typedefs, so should be required here/ Try and ensure those match
+            ref: 'User',
+            required: true,
         },
         meme: {
             type: Schema.Types.ObjectId,
-            ref: 'MemeCreation'
-            // @TODO: Required in your graphQL schema/typedefs, so should be required here/ Try and ensure those match
+            ref: 'MemeCreation',
+            required: true,
         }
     }
 );

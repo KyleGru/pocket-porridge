@@ -10,7 +10,7 @@ const commentSchema = new Schema(
         meme: {
             type: Schema.Types.ObjectId,
             ref: 'MemeCreation',
-            // @TODO: Required in your graphQL schema/typedefs, so should be required here/ Try and ensure those match
+            required: true
         },
         text: {
             type: String,
