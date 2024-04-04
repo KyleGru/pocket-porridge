@@ -14,8 +14,11 @@ const server = new ApolloServer({
     resolvers,
 });
 
+app.use(express.static(path.join(__dirname, '../PocketPorridge/dist')));
+
 const startApolloServer = async () => {
     await server.start();
+    
     app.use(express.urlencoded({ extended: false }));
     app.use(express.json());
 
