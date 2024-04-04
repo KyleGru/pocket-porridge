@@ -7,6 +7,7 @@ const { start } = require('repl');
 const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
+const { Server } = require('socket.io');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -15,6 +16,8 @@ const server = new ApolloServer({
     resolvers,
 });
 
+
+
 app.use(express.static(path.join(__dirname, '../PocketPorridge/dist')));
 
 const startApolloServer = async () => {
@@ -22,28 +25,40 @@ const startApolloServer = async () => {
     
     app.use(express.urlencoded({ extended: false }));
     app.use(express.json());
-
+    
     app.use(
         '/graphql',
         expressMiddleware(server, {
             context: authMiddleware,
         })
-    );
-
-    if (process.env.NODE_ENV === 'production') {
-        app.use(express.static(path.join(__dirname, '../PocketPorridge/dist')));
-    }
-
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, '../PocketPorridge/dist/index.html'));
-    });
-
-    db.once('open', () => {
-        app.listen(PORT, () => {
-            console.log(`API server running on port ${PORT}!`);
-            console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+        );
+        
+        if (process.env.NODE_ENV === 'production') {
+            app.use(express.static(path.join(__dirname, '../PocketPorridge/dist')));
+        }
+        
+        app.get('*', (req, res) => {
+            res.sendFile(path.join(__dirname, '../PocketPorridge/dist/index.html'));
         });
+        
+        db.once('open', () => {
+            app.listen(PORT, () => {
+                console.log(`API server running on port ${PORT}!`);
+                console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+            });
+        });
+    };
+    
+    //Socket.io setup
+    const io = new Server(httpServer);
+    io.on('connection', (socket) => {
+      console.log('a user connected');
+    
+      socket.on('disconnect', () => {
+        console.log('user disconnected');
+      });
+    
+      
     });
-};
-
-startApolloServer();
+    
+    startApolloServer();
