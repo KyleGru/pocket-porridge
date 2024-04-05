@@ -21,15 +21,14 @@ const UserSchema = new Schema({
         required: true,
         unique: true,
         match: emailRegex,
-        
     },
     password: {
         type: String,
         required: true,
         minlength: 5
     },
-    comments: [
-        {
+    comments: [ // @TODO: You *probably* don't need an array of comments on the User. The comments a user makes don't need to be stored here
+        { // @TODO: Rather, if you have a collection called 'Comments' and you want to get the user's comments, use a Comment.find mongoose method to filter comments where userId = userid
             type: Schema.Types.ObjectId,
             ref: 'Comment'
         }
