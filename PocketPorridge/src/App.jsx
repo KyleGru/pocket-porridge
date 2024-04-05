@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
+import { PorridgeNavbar } from './Components/PorridgeNavbar'
 
 //For socket.io implementation
 import { socket } from './socket';
@@ -44,7 +45,7 @@ function App() {
   
   return (
     <>
-    {/* <Navbar/> */}
+    <PorridgeNavbar />
     <Outlet/>
     <div className="App">
       <ConnectionState isConnected={ isConnected } />
