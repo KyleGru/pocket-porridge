@@ -7,6 +7,7 @@ const { start } = require('repl');
 const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
+const { createServer } = require('http');
 const { Server } = require('socket.io');
 
 const PORT = process.env.PORT || 3001;
@@ -15,6 +16,17 @@ const server = new ApolloServer({
     typeDefs,
     resolvers,
 });
+
+//CORS
+const httpServer = createServer(app);
+const cors = require('cors');
+
+const corsOptions = {
+    origin: 'http://localhost:3001',
+    credentials: true
+};
+
+app.use(cors(corsOptions));
 
 
 
@@ -42,23 +54,27 @@ const startApolloServer = async () => {
         });
         
         db.once('open', () => {
-            app.listen(PORT, () => {
-                console.log(`API server running on port ${PORT}!`);
+            httpServer.listen(PORT, () => {
+                console.log(`Server listening on port ${PORT}`);
                 console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
             });
         });
     };
-    
-    //Socket.io setup
-    const io = new Server(httpServer);
-    io.on('connection', (socket) => {
-      console.log('a user connected');
-    
-      socket.on('disconnect', () => {
-        console.log('user disconnected');
-      });
-    
-      
-    });
+//Socket.io setup
+const io = new Server(httpServer, {
+    cors: {
+        origin: 'http://localhost:3001',
+        methods: ['GET', 'POST'],
+        credentials: true
+    }
+});
+io.on('connection', (socket) => {
+  console.log('a user connected');
+
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  })}
+  
+  );
     
     startApolloServer();

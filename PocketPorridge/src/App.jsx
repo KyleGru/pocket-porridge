@@ -1,4 +1,4 @@
-// import { useState } from 'react'
+import React, { useEffect, useState } from 'react';
 // import Navbar from './components/Navbar'
 // import Footer from './components/Footer'
 import { Outlet } from 'react-router-dom'
@@ -6,7 +6,16 @@ import { Outlet } from 'react-router-dom'
 // import viteLogo from '/vite.svg'
 import './App.css'
 
+//For socket.io implementation
+import { socket } from './socket';
+import { ConnectionState } from './components/ConnectionState';
+import { ConnectionManager } from './components/ConnectionManager';
+import { Events } from "./components/Events";
+import { MyForm } from './components/MyForm';
+
 function App() {
+  const [isConnected, setIsConnected] = useState(false);
+  const [fooEvents, setFooEvents] = useState([]);
   
   //For socket.io implementation
   useEffect(() => {

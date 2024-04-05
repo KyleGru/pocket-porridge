@@ -9,16 +9,24 @@ export function MyForm() {
     event.preventDefault();
     setIsLoading(true);
 
-    socket.timeout(5000).emit('create-something', value, () => {
+    // Emitting an event to the server
+    socket.emit('create-something', value, (response) => {
+      clearTimeout(timeoutId); // Clear the timeout upon receiving a response
       setIsLoading(false);
+      console.log(response); // Handle the response
     });
+
+    // Set a timeout to handle the case when a response is not received
+    const timeoutId = setTimeout(() => {
+      console.log('Request timed out');
+      setIsLoading(false);
+    }, 5000);
   }
 
   return (
-    <form onSubmit={ onSubmit }>
-      <input onChange={ e => setValue(e.target.value) } />
-
-      <button type="submit" disabled={ isLoading }>Submit</button>
+    <form onSubmit={onSubmit}>
+      <input value={value} onChange={(e) => setValue(e.target.value)} />
+      <button type="submit" disabled={isLoading}>Submit</button>
     </form>
   );
 }
