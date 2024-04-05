@@ -1,5 +1,5 @@
 import { io } from 'socket.io-client';
-const io = new ServiceWorkerRegistrat
+// const io = new ServiceWorkerRegistrat
 
 const URL = process.env.NODE_ENV === 'production' ? undefined : 'http://localhost:3001';
 

@@ -54,10 +54,10 @@ function App() {
 
     {/* <Footer/> */}
     </>
-    
   )
 }
 
 
 
 export default App
+console.log(App);
