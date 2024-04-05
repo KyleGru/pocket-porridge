@@ -1,0 +1,16 @@
+.choiceFlex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 5px;
+}
+
+.memeBox {
+  border: 3px solid black;
+}
+
+.memeImg {
+  max-width: 300px;
+  max-height: 350px;
+  object-fit: cover;
+}
