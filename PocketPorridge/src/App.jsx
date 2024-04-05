@@ -47,12 +47,10 @@ function App() {
     <>
     <PorridgeNavbar />
     <Outlet/>
-    <div className="App">
-      <ConnectionState isConnected={ isConnected } />
-      <Events events={ fooEvents } />
-      <ConnectionManager />
-      <MyForm />
-    </div>
+    <ConnectionState isConnected={ isConnected } />
+    <Events events={ fooEvents } />
+    <ConnectionManager />
+    <MyForm />
 
     {/* <Footer/> */}
     </>
