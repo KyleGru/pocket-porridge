@@ -26,6 +26,8 @@ const resolvers = {
             if (context.user) {
                 return User.findOne({ _id: context.user._id }).populate('comments'); 
             }
+            // @TODO: you have lots of duplication of 'You need to be logged in!' string
+            // @TODO: Consider refactoring your not logged in message to a variable at the top of the file, then use your variable here instead of these strings
             throw new AuthenticationError('You need to be logged in!');
         },
     },
@@ -64,6 +66,8 @@ const resolvers = {
 
                 return comment;
             }
+            // @TODO: you have lots of duplication of 'You need to be logged in!' string
+            // @TODO: Consider refactoring your not logged in message to a variable at the top of the file, then use your variable here instead of these strings
             throw new AuthenticationError('You need to be logged in!');
         },
         createLike: async (parent, { memeId }, context) => { 
@@ -75,6 +79,8 @@ const resolvers = {
 
                 return like;
             }
+            // @TODO: you have lots of duplication of 'You need to be logged in!' string
+            // @TODO: Consider refactoring your not logged in message to a variable at the top of the file, then use your variable here instead of these strings
             throw new AuthenticationError('You need to be logged in!');
         },
         deleteComment: async (parent, { commentId }, context) => {
@@ -86,6 +92,8 @@ const resolvers = {
 
                 return comment;
             }
+            // @TODO: you have lots of duplication of 'You need to be logged in!' string
+            // @TODO: Consider refactoring your not logged in message to a variable at the top of the file, then use your variable here instead of these strings
             throw new AuthenticationError('You need to be logged in!');
         },
         deleteLike: async (parent, { likeId }, context) => {
@@ -97,6 +105,8 @@ const resolvers = {
 
                 return like;
             }
+            // @TODO: you have lots of duplication of 'You need to be logged in!' string
+            // @TODO: Consider refactoring your not logged in message to a variable at the top of the file, then use your variable here instead of these strings
             throw new AuthenticationError('You need to be logged in!');
         },
         deleteMeme: async (parent, { memeId }, context) => {
@@ -108,6 +118,8 @@ const resolvers = {
 
                 return meme;
             }
+            // @TODO: you have lots of duplication of 'You need to be logged in!' string
+            // @TODO: Consider refactoring your not logged in message to a variable at the top of the file, then use your variable here instead of these strings
             throw new AuthenticationError('You need to be logged in!');
         },
         updateMeme: async (parent, { memeId, title, description, imageUrl }, context) => {
@@ -120,6 +132,8 @@ const resolvers = {
 
                 return updatedMeme;
             }
+            // @TODO: you have lots of duplication of 'You need to be logged in!' string
+            // @TODO: Consider refactoring your not logged in message to a variable at the top of the file, then use your variable here instead of these strings
             throw new AuthenticationError('You need to be logged in!');
         },
     }

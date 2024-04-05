@@ -1,9 +1,5 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-// import { Row, Col } from 'react-bootstrap';
-
-
-
 
 export default function Home() {
     const [memes, setMemes] = useState([]);
@@ -11,11 +7,11 @@ export default function Home() {
     useEffect(() => {
         const fetchMemes = async () => {
             try {
-            const response = await axios.get('https://api.imgflip.com/get_memes')
-            const { memes } = response.data.data;
-            setMemes(memes);
+                const response = await axios.get('https://api.imgflip.com/get_memes')
+                const { memes } = response.data.data;
+                setMemes(memes);
             } catch (error) {
-            console.error('Error fetching memes', error);
+                console.error('Error fetching memes', error);
             }
         }
         fetchMemes();
