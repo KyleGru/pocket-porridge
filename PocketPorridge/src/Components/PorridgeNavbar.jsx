@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Logo } from './Logo'
+import { CreateMemeButton, CreateMemeModal } from "./CreateMemeModal";
 import './PorridgeNavbar.css'
 
 export function PorridgeNavbar() {
@@ -19,7 +20,7 @@ export function PorridgeNavbar() {
           <Nav className="navLinkFlex">
             <Nav.Link href="#home">Chat</Nav.Link>
             <Nav.Link href="#features">Search</Nav.Link>
-            <Nav.Link href="#pricing">Create Meme</Nav.Link>
+            <CreateMemeButton />
           </Nav>
         </Container>
       </Navbar>
