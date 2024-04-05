@@ -26,13 +26,13 @@ export function MemeChoices() {
         <div className='choiceFlex'>
           {memes.map((meme, index) => (
                     <div key={index}>
-                        <div className='memeBox'>
+                        <button className='memeBox'>
                             <img 
                                 className='memeImg'
                                 src={meme.url}
                                 alt={meme.name}
                             />
-                        </div>
+                        </button>
                     </div>
                 ))}
         </div>
