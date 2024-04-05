@@ -1,3 +1,5 @@
+//NOTE: server will throw graphql error while the TODOs are listed in the below code.
+
 const typeDefs = `
   type User {
     _id: ID!
