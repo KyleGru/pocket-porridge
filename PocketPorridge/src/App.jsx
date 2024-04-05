@@ -1,9 +1,6 @@
-// import { useState } from 'react'
-// import Navbar from './components/Navbar'
-// import Footer from './components/Footer'
+// @TODO: Usually to rip out commented out code rather than leave commented out when committing
+// You can use git to get the code back if you really need it
 import { Outlet } from 'react-router-dom'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import './App.css'
 import { PorridgeNavbar } from './Components/PorridgeNavbar'
 
@@ -12,7 +9,6 @@ function App() {
     <>
     <PorridgeNavbar />
     <Outlet/>
-    {/* <Footer/> */}
     </>
   )
 }

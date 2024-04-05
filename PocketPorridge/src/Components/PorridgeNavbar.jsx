@@ -7,6 +7,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Logo } from './Logo'
+import { CreateMemeButton, CreateMemeModal } from "./CreateMemeModal";
 import './PorridgeNavbar.css'
 
 export function PorridgeNavbar() {
