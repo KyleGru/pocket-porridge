@@ -30,7 +30,7 @@ return (
         <Nav className="mr-auto">
           <Nav.Link href="#home">Chat</Nav.Link>
           <Nav.Link href="#features">Search</Nav.Link>
-          <Nav.Link href="#pricing">Create Meme</Nav.Link>
+          <CreateMemeButton />
         </Nav>
         <Nav className="ml-auto flex-column">
           <Button variant="outline-light" className="mr-2" onClick={handleLoginShow}>Login</Button>
