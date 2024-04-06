@@ -9,7 +9,7 @@ const Like = new Schema(
         },
         meme: {
             type: Schema.Types.ObjectId,
-            ref: 'MemeCreation',
+            ref: 'MemeCreation', // @TODO: Consider changing this to just 'Meme'
             required: true,
         }
     }

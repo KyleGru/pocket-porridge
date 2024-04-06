@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 
+// @TODO: Consider changing this to just 'Meme'
 const memeCreationSchema = new Schema(
     {
         user: {
