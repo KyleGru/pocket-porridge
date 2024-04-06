@@ -71,3 +71,5 @@ const typeDefs = `
 `;
 
 module.exports = typeDefs;
+
+//TODO's from main
