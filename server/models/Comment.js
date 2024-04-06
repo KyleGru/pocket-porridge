@@ -9,7 +9,7 @@ const commentSchema = new Schema(
         },
         meme: {
             type: Schema.Types.ObjectId,
-            ref: 'MemeCreation', // @TODO: Consider changing this to just 'Meme'
+            ref: 'Meme',
             required: true
         },
         text: {
