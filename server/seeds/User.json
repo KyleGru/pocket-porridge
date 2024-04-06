@@ -1,0 +1,29 @@
+[
+  {
+    "firstName":"omri",
+    "lastName":"Frazer",
+    "email":"omrifrazer@gmail.com",
+    "password":"123ABCpass"
+  },
+
+  {
+    "firstName":"kyle",
+    "lastName":"Gruschow",
+    "email":"gruschow@yahoo.com",
+    "password":"123ABCpass"
+  },
+
+  {
+    "firstName":"ryan",
+    "lastName":"Bedard",
+    "email":"bedard@yahoo.com",
+    "password":"123ABCpass"
+  },
+
+  {
+    "firstName":"zach",
+    "lastName":"Smith",
+    "email":"smith@yahoo.com",
+    "password":"123ABCpass"
+  }
+]

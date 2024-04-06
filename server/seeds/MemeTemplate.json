@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Comedy",
+    "description": "CHEM",
+    "imageUrl": "https://imgflip.com/gif/7ocjcc"
+  },
+  {
+    "title": "Music",
+    "description": "LS",
+    "imageUrl": "https://imgflip.com/gif/88sot4"
+  },
+  {
+    "title": "Movies",
+    "description": "SCI",
+    "imageUrl": "https://imgflip.com/i/6hwfqg"
+  },
+  {
+    "title": "Fun",
+    "description": "SCI",
+    "imageUrl": "https://imgflip.com/i/6a701p"
+  },
+  {
+    "title": "Political",
+    "description": "SCI",
+    "imageUrl": "https://imgflip.com/gif/7heusm"
+  }
+]
