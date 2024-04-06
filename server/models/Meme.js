@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-// @TODO: Consider changing this to just 'Meme'
-const memeCreationSchema = new Schema(
+const memeSchema = new Schema(
     {
         user: {
             type: Schema.Types.ObjectId, 
@@ -34,6 +33,6 @@ const memeCreationSchema = new Schema(
     }
 );
 
-const memeCreation = model('MemeCreation', memeCreationSchema);
+const Meme = model('Meme', memeSchema);
 
-module.exports = memeCreation;
+module.exports = Meme;
