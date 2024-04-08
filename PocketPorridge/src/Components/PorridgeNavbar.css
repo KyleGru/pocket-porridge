@@ -12,3 +12,7 @@
   flex-direction: row;
     gap: 15%;
 }
+
+.navbar-gradient {
+  background: linear-gradient(to right, black, rgb(192, 193, 164));
+}

@@ -16,6 +16,28 @@ export default function Home() {
         }
         fetchMemes();
     }, [])
+    // const fetchAutomeme = async () => {
+    //     try {
+    //       console.log('API username', process.env.REACT_APP_API_USERNAME)
+    //       console.log('API password', process.env.REACT_APP_API_PASSWORD)
+
+    //       const response = await axios.post(
+    //         'https://api.imgflip.com/automeme',
+    //         {
+    //           username: process.env.REACT_APP_API_USERNAME,
+    //           password: process.env.REACT_APP_API_PASSWORD,
+    //         }
+    //       );
+  
+    //       // Assuming the API response contains an array of generated memes
+    //       setMemes(response.data.memes);
+    //     } catch (error) {
+    //       console.error('Error fetching automeme:', error);
+    //     }
+    //   };
+  
+    //   fetchAutomeme();
+    // }, []);
 
     return (
         <div className="container">
