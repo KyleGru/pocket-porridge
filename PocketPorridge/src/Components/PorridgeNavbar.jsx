@@ -22,7 +22,7 @@ const handleSignupShow = () => setShowSignupModal(true);
 
 return (
   <header>
-    <Navbar bg="primary" variant="dark">
+    <Navbar bg="dark" variant="dark" className='navbar-gradient'>
       <Container>
         <Navbar.Brand href="#home">
           <Logo />
