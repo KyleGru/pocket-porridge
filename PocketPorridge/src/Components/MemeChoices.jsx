@@ -1,10 +1,12 @@
 import "./MemeChoices.css";
 import { useState, useEffect } from "react";
+import { TextInputModal } from "./TextInputModal";
 import axios from "axios";
 import _ from 'underscore'
 
 export function MemeChoices() {
   const [memes, setMemes] = useState([]);
+  const [textInput, setTextInput] = useState(false)
   let matchMemeArray = []
 
   useEffect(() => {
@@ -56,6 +58,7 @@ export function MemeChoices() {
             <button
               className="memeBox"
               onClick={() => {
+                setTextInput(true);
                 const value = meme.id;
                 console.log(value);
               }}
@@ -65,6 +68,12 @@ export function MemeChoices() {
           </div>
         ))}
       </div>
+
+      <TextInputModal 
+                show={textInput}
+                onClose={() => setTextInput(false)}
+                />
+    
     </>
   );
 }
