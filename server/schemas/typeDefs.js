@@ -1,11 +1,10 @@
-
+// Deleted password in user typeDef - front end should not have access
 const typeDefs = `
   type User {
     _id: ID!
     firstName: String!
     lastName: String!
     email: String!
-    password: String!
     comments: [Comment]
   }
 
