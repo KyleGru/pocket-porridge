@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,15 +8,31 @@ import { Logo } from './Logo'
 import { CreateMemeButton, CreateMemeModal } from "./CreateMemeModal";
 import './PorridgeNavbar.css'
 import UserModal from "./UserModal";
+import AuthService from '../utils/auth.js';
 
 export function PorridgeNavbar() {
 const [showLoginModal, setShowLoginModal] = useState(false);
 const [showSignupModal, setShowSignupModal] = useState(false);
+const [user, setUser] = useState(null);
 
 const handleLoginClick = () => setShowLoginModal(false);
 const handleLoginShow = () => setShowLoginModal(true);
 const handleSignupClick = () => setShowSignupModal(false);
 const handleSignupShow = () => setShowSignupModal(true);
+
+useEffect(() => {
+  const loggedInUser = AuthService.getProfile();
+  if (loggedInUser) {
+    setUser(loggedInUser);
+  } else {
+    console.log('Invalid or missing token')
+  }
+}, []);
+
+const handleLogout = () => {
+  AuthService.logout();
+  setUser(null);
+}
 
 
 return (
@@ -32,8 +48,17 @@ return (
           <CreateMemeButton />
         </Nav>
         <Nav className="ml-auto flex-column">
+          {user ? (
+            <div className='user-info'>
+              <span>{`${AuthService.getFirstName()} ${AuthService.getLastName()}`}</span>
+              <Button variant="outline-light" onClick={handleLogout}>Logout</Button>
+            </div>
+          ) : (
+            <>
           <Button variant="outline-light" className="mr-2" onClick={handleLoginShow}>Login</Button>
           <Button variant="light" onClick={handleSignupShow}>Signup</Button>
+            </>
+          )}
         </Nav>
       </Container>
     </Navbar>
