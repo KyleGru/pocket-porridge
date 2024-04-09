@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import AuthService from '../utils/auth.js';
 
 const UserModal = ({ title, show, handleClose }) => {
     const [formData, setFormData] = useState({
@@ -21,8 +22,16 @@ const UserModal = ({ title, show, handleClose }) => {
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
+        try {
+            const userData = await AuthService.login(formData);
+            console.log(userData);
+            handleClose();
+        } catch (error) {
+            console.error('Error Authenticating', error);
+        }
     };
 
     return (
