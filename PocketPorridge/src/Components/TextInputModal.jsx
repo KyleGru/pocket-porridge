@@ -29,28 +29,27 @@ const textSubmit = async (e) => {
 const response = await fetch(`https://api.imgflip.com/caption_image?template_id=102156234&username=g_user_102490864058635787590&password=PocketPorridge&text0=${topText}&text1=${bottomText}`, {
   method: "POST"
 } )
-const data = await response.json()
-console.log(data);
-saveData(data);
+const apiData = await response.json()
+console.log(apiData);
+saveData(apiData);
   } catch (error) {
     console.error("Error creating meme", error);
   }
   // window.location.reload()
 }
 
-const saveData = async (data) => {
-  console.log('data', data.data.url);
-  let memeURL = data.data.url
+const saveData = async (apiData) => {
+  console.log('data', apiData.data.url);
+  let memeURL = apiData.data.url;
   try {
-    const { data } = await addMeme({
-      variables: { url: newMeme.url },
+    const { data: mutationData } = await addMeme({
+      variables: { url: memeURL }, // Assuming the mutation requires only the URL
     });
-    setNewMeme(memeURL)
-
+    setNewMeme({ url: memeURL }); // Update the url property of newMeme
   } catch (err) {
     console.log(err);
   }
- }
+}
 
 
   return (
