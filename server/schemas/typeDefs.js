@@ -1,10 +1,10 @@
 // Deleted password in user typeDef - front end should not have access
 const typeDefs = `
   type User {
-    _id: ID!
-    firstName: String!
-    lastName: String!
-    email: String!
+    _id: ID
+    firstName: String
+    lastName: String
+    email: String
     comments: [Comment]
   }
 
@@ -38,7 +38,7 @@ const typeDefs = `
   }
 
   type Auth {
-    token: ID!
+    token: ID
     user: User
   }
 
@@ -53,7 +53,7 @@ const typeDefs = `
   }
 
   type Mutation {
-    createUser(firstName: String!, lastName: String!, email: String!, password: String!): User
+    createUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): User
     createMeme(title: String!, description: String!, imageUrl: String!): Meme
     createComment(memeId: ID!, text: String!): Comment

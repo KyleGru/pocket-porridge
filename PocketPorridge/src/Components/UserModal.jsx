@@ -2,8 +2,13 @@ import { useState } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import AuthService from '../utils/auth.js';
+import { LOGIN } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
 
-const UserModal = ({ title, show, handleClose }) => {
+const UserModal = (props) => {
+    const { title, show, handleClose } = props
+    const[login, { error }] = useMutation(LOGIN)
+
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -24,14 +29,27 @@ const UserModal = ({ title, show, handleClose }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
-            const userData = await AuthService.login(formData);
-            console.log(userData);
+            const data = await login({
+              variables: { ...formData },
+            });
+            console.log(data)
+      
+            AuthService.login(data.login.token);
+            props.handler(data)
             handleClose();
-        } catch (error) {
-            console.error('Error Authenticating', error);
-        }
+          } catch (error) {
+            console.error(error);
+          }
+
+        // try {
+        //     const userData = await AuthService.login(formData);
+        //     console.log(userData);
+        //     props.handler(userData)
+        //     handleClose();
+        // } catch (error) {
+        //     console.error('Error Authenticating', error);
+        // }
     };
 
     return (
