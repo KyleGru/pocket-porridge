@@ -7,6 +7,7 @@ import App from './App'
 import Error from './pages/Error'
 import Home from './pages/Home'
 
+
 const router = createBrowserRouter([
   {
     path: '/',

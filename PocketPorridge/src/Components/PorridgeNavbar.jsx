@@ -29,10 +29,10 @@ const handleSignupShow = () => setShowSignupModal(true);
 //   }
 // }, []);
 
-// const handleLogout = () => {
-//   AuthService.logout();
-//   setUser(null);
-// }
+const handleLogout = () => {
+  AuthService.logout();
+  setUser(null);
+}
 
 
 return (
@@ -77,5 +77,5 @@ return (
       handleClose={handleSignupClick}
     />
   </header>
-)
-}
+)}
+
