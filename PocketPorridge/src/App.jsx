@@ -3,8 +3,8 @@
 import { Outlet } from 'react-router-dom'
 import './App.css'
 import { PorridgeNavbar } from './Components/PorridgeNavbar'
-// import dotenv from 'dotenv'
-// dotenv.config()
+import dotenv from 'dotenv'
+dotenv.config()
 
 function App() {
   return (
