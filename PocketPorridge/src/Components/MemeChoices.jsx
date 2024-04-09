@@ -60,6 +60,7 @@ export function MemeChoices() {
               onClick={() => {
                 setTextInput(true);
                 const value = meme.id;
+                localStorage.setItem('selectedMeme', value)
                 console.log(value);
               }}
             >
