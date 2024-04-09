@@ -5,25 +5,45 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { Outlet } from 'react-router-dom'
 
 import { PorridgeNavbar } from './Components/PorridgeNavbar'
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { Outlet } from 'react-router-dom'
+
+
+
+
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { PorridgeNavbar }) => {
+  const token = localStorage.getItem('id_token');
+
+  return {
+    PorridgeNavbar: {
+      ...PorridgeNavbar,
+        authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+3
 // import dotenv from 'dotenv'
 // dotenv.config()
 
-const client = new ApolloClient({
-  uri: '/graphql',
-  cache: new InMemoryCache(),
-});
-
 function App() {
   return (
-    <>
     <ApolloProvider client={client}>
-    <PorridgeNavbar />
-    <Outlet/>
+      <div>
+        <PorridgeNavbar />
+        <Outlet/>
+      </div>
     </ApolloProvider>
-    </>
-  )
+  );
 }
-
-
 
 export default App
