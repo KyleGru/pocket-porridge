@@ -77,5 +77,5 @@ return (
       handleClose={handleSignupClick}
     />
   </header>
-)
-}
+)}
+
