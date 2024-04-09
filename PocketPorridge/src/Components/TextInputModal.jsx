@@ -3,29 +3,54 @@ import Modal from 'react-bootstrap/Modal';
 import './CreateMemeModal.css'
 import React from 'react';
 import { useState } from 'react'
+import { useMutation } from '@apollo/client';
+import { ADD_MEME } from '../utils/API';
 
 export function TextInputModal(props) {
 const [topText, setTopText] = useState('')
 const [bottomText, setBottomText] = useState('')
 
+
+  const [newMeme, setNewMeme] = useState({ 
+    url: ""
+  })
+
+  const [addMeme, { error }] = useMutation(ADD_MEME);
+
+
+
+
 const textSubmit = async (e) => {
-  e.preventDefault();
+  // e.preventDefault();
   console.log('Top Text', topText)
   console.log('Bottom Text', bottomText)
 
   try {
-
 const response = await fetch(`https://api.imgflip.com/caption_image?template_id=102156234&username=g_user_102490864058635787590&password=PocketPorridge&text0=${topText}&text1=${bottomText}`, {
   method: "POST"
 } )
-
 const data = await response.json()
 console.log(data);
-
+saveData(data);
   } catch (error) {
     console.error("Error creating meme", error);
   }
+  // window.location.reload()
 }
+
+const saveData = async (data) => {
+  console.log('data', data.data.url);
+  let memeURL = data.data.url
+  try {
+    const { data } = await addMeme({
+      variables: { url: newMeme.url },
+    });
+    setNewMeme(memeURL)
+
+  } catch (err) {
+    console.log(err);
+  }
+ }
 
 
   return (
@@ -55,3 +80,4 @@ console.log(data);
     </Modal>
   );
 }
+

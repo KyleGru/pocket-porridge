@@ -16,13 +16,7 @@ const typeDefs = `
 
   type Meme { 
     _id: ID!
-    user: User!
-    template: MemeTemplate!
-    title: String!
-    description: String!
-    createdAt: String!
-    likes: [Like]
-    comments: [Comment]
+    url: String!
   }
 
   type Comment {
@@ -53,6 +47,7 @@ const typeDefs = `
   }
 
   type Mutation {
+    addMeme(url: String!): Meme
     createUser(firstName: String!, lastName: String!, email: String!, password: String!): User
     login(email: String!, password: String!): User
     createMeme(title: String!, description: String!, imageUrl: String!): Meme
