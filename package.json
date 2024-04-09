@@ -8,6 +8,7 @@
         "develop": "concurrently \"cd server && npm run watch\" \"cd PocketPorridge && npm run dev\"",
         "install": "cd server && npm i && cd ../PocketPorridge && npm i && npm run build",
         "build": "cd PocketPorridge && npm run build",
+        "seed": "cd server && npm run seed",
         "render-build": "npm install && npm run build"
     },
     "keywords": [],
@@ -19,6 +20,7 @@
     "dependencies": {
         "@apollo/client": "^3.9.10",
         "apolloclient": "^0.0.2",
+        "dotenv": "^16.4.5",
         "underscore": "^1.13.6"
     }
 }

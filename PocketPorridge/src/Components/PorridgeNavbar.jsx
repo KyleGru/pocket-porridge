@@ -20,14 +20,14 @@ const handleLoginShow = () => setShowLoginModal(true);
 const handleSignupClick = () => setShowSignupModal(false);
 const handleSignupShow = () => setShowSignupModal(true);
 
-useEffect(() => {
-  const loggedInUser = AuthService.getProfile();
-  if (loggedInUser) {
-    setUser(loggedInUser);
-  } else {
-    console.log('Invalid or missing token')
-  }
-}, []);
+// useEffect(() => {
+//   const loggedInUser = AuthService.getProfile();
+//   if (loggedInUser) {
+//     setUser(loggedInUser);
+//   } else {
+//     console.log('Invalid or missing token')
+//   }
+// }, []);
 
 const handleLogout = () => {
   AuthService.logout();
