@@ -17,6 +17,8 @@
         "concurrently": "^8.2.0"
     },
     "dependencies": {
+        "@apollo/client": "^3.9.10",
+        "apolloclient": "^0.0.2",
         "underscore": "^1.13.6"
     }
 }
