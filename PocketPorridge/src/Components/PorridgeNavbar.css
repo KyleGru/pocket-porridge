@@ -16,3 +16,20 @@
 .navbar-gradient {
   background: linear-gradient(to right, black, rgb(192, 193, 164));
 }
+
+.loginGap {
+  gap: 10px;
+}
+
+@media screen and (max-width: 766px) {
+  nav {
+    flex-direction: column;
+  }
+  .container {
+    flex-direction: column;
+  }
+  a {
+    display: flex;
+    flex-direction: column;
+  }
+}
