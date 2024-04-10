@@ -25,21 +25,10 @@ query me {
 `;
 
 export const QUERY_MEMES = gql`
-query memes {
+  query getMemes{
     memes {
         _id
-        user
-        template
-        title
-        description
-        createdAt
-        likes 
-        comments {
-            _id
-            user
-            comment
-            createdAt
-        }
+        url
     }
 }
 `;
