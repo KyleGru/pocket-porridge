@@ -35,7 +35,7 @@ saveData(apiData);
   } catch (error) {
     console.error("Error creating meme", error);
   }
-  // window.location.reload()
+ 
 }
 
 const saveData = async (apiData) => {
@@ -57,6 +57,7 @@ const saveData = async (apiData) => {
     // Error occurred during mutation
     console.error('Error adding meme:', err);
   }
+   window.location.reload()
 };
 
 
