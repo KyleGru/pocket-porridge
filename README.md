@@ -1,16 +1,8 @@
-# TODO: Please add instructions for your group on how to run this project. Please also include instructions to "be sure to do a git pull and npm install" before the instructions for starting the project (ping)
-
-
 # pocket-porridge
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
+Pocket Porridge is a meme generating website where you can create an account, log in, and create memes to share with your friends! After your meme is generated it is posted on the home page for everyone to see.
 
 ## Installation
 
@@ -21,6 +13,7 @@ Download the Github repository. From there do an npm install in the terminal and
 Navigate to the site using your desktop or mobile browser. Log in to your user account or sign up if you don't have one yet. Create a meme by clicking the 'Create Meme' button and follow the prompts.
 
 ![alt text](Assets/Screenshot%202024-04-07%20212811.png)
+https://pocket-porridge.onrender.com/#home
 
 ## Credits
 
