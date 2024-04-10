@@ -1,7 +1,9 @@
+require ('dotenv').config()
 const { GraphQLError } = require('graphql');
 const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
 const expiration = process.env.JWT_EXPIRATION;
+
 
 module.exports = {
     AuthenticationError: new GraphQLError('You must be logged in to do that.', {
@@ -29,8 +31,8 @@ module.exports = {
 
         return req;
     },
-    signToken: function ({ email, username, _id }) {
-        const payload = { email, username, _id };
+    signToken: function ({ email, _id }) {
+        const payload = { email, _id };
 
         return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
     },

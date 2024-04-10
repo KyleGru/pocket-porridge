@@ -10,15 +10,23 @@ import './PorridgeNavbar.css'
 import UserModal from "./UserModal";
 import AuthService from '../utils/auth.js';
 
-export function PorridgeNavbar() {
+
+export default function PorridgeNavbar() {
 const [showLoginModal, setShowLoginModal] = useState(false);
 const [showSignupModal, setShowSignupModal] = useState(false);
 const [user, setUser] = useState(null);
+const handleSetUser = (value) => {
+  console.log(value)
+  setUser(value)
+}
+const handleLoginClick = () => {
+  setShowLoginModal(false)
 
-const handleLoginClick = () => setShowLoginModal(false);
+};
 const handleLoginShow = () => setShowLoginModal(true);
 const handleSignupClick = () => setShowSignupModal(false);
 const handleSignupShow = () => setShowSignupModal(true);
+
 
 // useEffect(() => {
 //   const loggedInUser = AuthService.getProfile();
@@ -29,10 +37,10 @@ const handleSignupShow = () => setShowSignupModal(true);
 //   }
 // }, []);
 
-const handleLogout = () => {
-  AuthService.logout();
-  setUser(null);
-}
+// const handleLogout = () => {
+//   AuthService.logout();
+//   setUser(null);
+// }
 
 
 return (
@@ -48,7 +56,7 @@ return (
           <CreateMemeButton />
         </Nav>
         <Nav className="ml-auto flex-column">
-          {user ? (
+          {/* {user ? (
             <div className='user-info'>
               <span>{`${AuthService.getFirstName()} ${AuthService.getLastName()}`}</span>
               <Button variant="outline-light" onClick={handleLogout}>Logout</Button>
@@ -58,7 +66,11 @@ return (
           <Button variant="outline-light" className="mr-2" onClick={handleLoginShow}>Login</Button>
           <Button variant="light" onClick={handleSignupShow}>Signup</Button>
             </>
-          )}
+          )} */}
+            <>
+          <Button variant="outline-light" className="mr-2" onClick={handleLoginShow} >Login</Button>
+          <Button variant="light" onClick={handleSignupShow}>Signup</Button>
+            </>
         </Nav>
       </Container>
     </Navbar>
@@ -68,6 +80,7 @@ return (
       title="Login"
       show={showLoginModal}
       handleClose={handleLoginClick}
+      handler={handleSetUser}
     />
 
     {/* Signup Modal */}
@@ -75,6 +88,7 @@ return (
       title="Signup"
       show={showSignupModal}
       handleClose={handleSignupClick}
+      handler={handleSetUser}
     />
   </header>
 )}

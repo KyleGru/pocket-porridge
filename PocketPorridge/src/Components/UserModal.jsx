@@ -2,14 +2,20 @@ import { useState } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import AuthService from '../utils/auth.js';
+import { LOGIN, CREATE_USER } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
 
-const UserModal = ({ title, show, handleClose }) => {
+const UserModal = (props) => {
+    const { title, show, handleClose, handler } = props
+    const [login] = useMutation(LOGIN)
+
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
         email: '',
         password: '',
     });
+    const [createUser, { error, data }] = useMutation(CREATE_USER)
 
     UserModal.propTypes = {
         title: PropTypes.string.isRequired,
@@ -20,18 +26,44 @@ const UserModal = ({ title, show, handleClose }) => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+        console.log(formData)
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
-            const userData = await AuthService.login(formData);
-            console.log(userData);
-            handleClose();
+            if (title === 'Login') {
+                const { data } = await login({
+                    variables: { ...formData },
+                });
+                console.log(data)
+                AuthService.login(data.login.token);
+                handler(data)
+                handleClose();
+            } else if (title === 'Signup') {
+                const { data } = await createUser({
+                    variables: { ...formData },
+                });
+                console.log(data)
+                AuthService.login(data.createUser.token);
+                handler(data)
+                handleClose();
+                
+            }
+
+    
         } catch (error) {
-            console.error('Error Authenticating', error);
+            console.error(error);
         }
+
+        // try {
+        //     const userData = await AuthService.login(formData);
+        //     console.log(userData);
+        //     props.handler(userData)
+        //     handleClose();
+        // } catch (error) {
+        //     console.error('Error Authenticating', error);
+        // }
     };
 
     return (

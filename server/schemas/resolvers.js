@@ -33,27 +33,35 @@ const resolvers = {
     },
 
     Mutation: {
-        createUser: async (parent, { firstName, lastName, email, password }) => { 
-            const user = await User.create({ firstName, lastName, email, password });
+        createUser: async (parent, args) => { 
+            console.log(args)
+            const{ firstName, lastName, email, password } = args
+            const user = await User.create(args);
             const token = signToken(user);
-            return { token, user };
+            
+            const data = {token, user}
+            console.log(data)
+            return data
         },
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
 
             if (!user) {
-                throw new AuthenticationError('No user found with this email address');
+                // throw AuthenticationError('No user found with this email address');
+                console.log('No user found with this email address')
             }
 
             const correctPassword = await user.isCorrectPassword(password);
 
             if (!correctPassword) {
-                throw new AuthenticationError('Incorrect credentials');
+                // throw AuthenticationError('Incorrect credentials');
+                console.log('Incorrect credentials')
             }
 
             const token = signToken(user);
-
-            return { token, user };
+            const data = {token, user}
+            console.log(data)
+            return data;
         },
 
         createComment: async (parent, { memeId, text }, context) => { 
