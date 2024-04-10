@@ -88,6 +88,7 @@ return (
       title="Signup"
       show={showSignupModal}
       handleClose={handleSignupClick}
+      handler={handleSetUser}
     />
   </header>
 )}
