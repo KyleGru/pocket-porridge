@@ -21,7 +21,6 @@ export function CreateMemeModal(props) {
       <Modal.Body>
         <div className='memeBtnFlex'>
       <ChooseMeme />
-      <UploadImage />
       </div>
       </Modal.Body>
       <Modal.Footer>
@@ -36,7 +35,7 @@ export function CreateMemeButton() {
 
   return (
     <>
-      <Button variant="primary" onClick={() => setModalShow(true)}>
+      <Button className='memeBtn' variant="dark" onClick={() => setModalShow(true)}>
         Create Meme
       </Button>
 

@@ -49,13 +49,12 @@ return (
       <Container>
         <Navbar.Brand href="#home">
           <Logo />
+          <CreateMemeButton />
         </Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link href="#home">Chat</Nav.Link>
-          <Nav.Link href="#features">Search</Nav.Link>
-          <CreateMemeButton />
+         
         </Nav>
-        <Nav className="ml-auto flex-column">
+        <Nav className="ml-auto flex-column loginGap">
           {/* {user ? (
             <div className='user-info'>
               <span>{`${AuthService.getFirstName()} ${AuthService.getLastName()}`}</span>
