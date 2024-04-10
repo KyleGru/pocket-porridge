@@ -4,6 +4,4 @@ mongoose.connect(process.env.MONGODB_UR || 'mongodb+srv://smithz852:pocketporrid
 
 // mongoose.connect(process.env.MONGODB_UR || 'mongodb://localhost:27017/PocketPorridge');
 
-//pocketporridge
-
 module.exports = mongoose.connection;

@@ -14,9 +14,8 @@ export function MemeChoices() {
       try {
         const response = await axios.get("https://api.imgflip.com/get_memes");
         const { memes } = response.data.data;
-        console.log(memes);
+        // console.log(memes);
         sortMemes(memes)
-        // setMemes(memes);
       } catch (error) {
         console.error("Error fetching memes", error);
       }
@@ -36,7 +35,7 @@ export function MemeChoices() {
         181913649, 217743513, 511654183,
       ];
 
-      console.log(memeSelectionArray);
+      // console.log(memeSelectionArray);
       await memes.forEach((id) => {
         let extractId = [JSON.parse(id.id)];
         let matches = _.intersection(memeSelectionArray, extractId);

@@ -19,7 +19,6 @@ const [bottomText, setBottomText] = useState('')
 
 
 const textSubmit = async (e) => {
-  // e.preventDefault();
   console.log('Top Text', topText)
   console.log('Bottom Text', bottomText)
   console.log(localStorage.getItem('selectedMeme'));
@@ -44,17 +43,14 @@ const saveData = async (apiData) => {
     const { data } = await addMeme({
       variables: { url: memeURL },
     });
-    console.log('Mutation response:', data); // Log the response from the mutation
+    console.log('Mutation response:', data); 
     if (data && data.addMeme) {
-      // Mutation was successful
       console.log('Meme added successfully:', data.addMeme);
       setUrl(memeURL);
     } else {
-      // Mutation failed or returned unexpected data
       console.error('Failed to add meme:', data);
     }
   } catch (err) {
-    // Error occurred during mutation
     console.error('Error adding meme:', err);
   }
    window.location.reload()
