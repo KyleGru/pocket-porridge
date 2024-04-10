@@ -11,9 +11,7 @@ const [topText, setTopText] = useState('')
 const [bottomText, setBottomText] = useState('')
 
 
-  const [newMeme, setNewMeme] = useState({ 
-    url: ""
-  })
+  const [url, setUrl] = useState('')
 
   const [addMeme, { error }] = useMutation(ADD_MEME);
 
@@ -24,9 +22,11 @@ const textSubmit = async (e) => {
   // e.preventDefault();
   console.log('Top Text', topText)
   console.log('Bottom Text', bottomText)
+  console.log(localStorage.getItem('selectedMeme'));
+  const memeID = localStorage.getItem('selectedMeme')
 
   try {
-const response = await fetch(`https://api.imgflip.com/caption_image?template_id=102156234&username=g_user_102490864058635787590&password=PocketPorridge&text0=${topText}&text1=${bottomText}`, {
+const response = await fetch(`https://api.imgflip.com/caption_image?template_id=${memeID}&username=g_user_102490864058635787590&password=PocketPorridge&text0=${topText}&text1=${bottomText}`, {
   method: "POST"
 } )
 const apiData = await response.json()
@@ -39,17 +39,25 @@ saveData(apiData);
 }
 
 const saveData = async (apiData) => {
-  console.log('data', apiData.data.url);
-  let memeURL = apiData.data.url;
+  const memeURL = apiData.data.url;
   try {
-    const { data: mutationData } = await addMeme({
-      variables: { url: memeURL }, // Assuming the mutation requires only the URL
+    const { data } = await addMeme({
+      variables: { url: memeURL },
     });
-    setNewMeme({ url: memeURL }); // Update the url property of newMeme
+    console.log('Mutation response:', data); // Log the response from the mutation
+    if (data && data.addMeme) {
+      // Mutation was successful
+      console.log('Meme added successfully:', data.addMeme);
+      setUrl(memeURL);
+    } else {
+      // Mutation failed or returned unexpected data
+      console.error('Failed to add meme:', data);
+    }
   } catch (err) {
-    console.log(err);
+    // Error occurred during mutation
+    console.error('Error adding meme:', err);
   }
-}
+};
 
 
   return (
