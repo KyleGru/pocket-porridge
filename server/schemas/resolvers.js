@@ -137,7 +137,6 @@ const resolvers = {
                     { title, description, imageUrl },
                     { new: true }
                 );
-
                 return updatedMeme;
             }
             // @TODO: you have lots of duplication of 'You need to be logged in!' string
