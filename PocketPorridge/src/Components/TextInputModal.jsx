@@ -39,17 +39,25 @@ saveData(apiData);
 }
 
 const saveData = async (apiData) => {
-  console.log('data', apiData.data.url);
-  let memeURL = apiData.data.url;
+  const memeURL = apiData.data.url;
   try {
     const { data } = await addMeme({
-      variables: { url },
+      variables: { url: memeURL },
     });
-    setUrl(memeURL); 
+    console.log('Mutation response:', data); // Log the response from the mutation
+    if (data && data.addMeme) {
+      // Mutation was successful
+      console.log('Meme added successfully:', data.addMeme);
+      setUrl(memeURL);
+    } else {
+      // Mutation failed or returned unexpected data
+      console.error('Failed to add meme:', data);
+    }
   } catch (err) {
-    console.log(err);
+    // Error occurred during mutation
+    console.error('Error adding meme:', err);
   }
-}
+};
 
 
   return (

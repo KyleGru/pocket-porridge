@@ -11,7 +11,7 @@ const resolvers = {
             return User.findOne({ username }).populate('comments'); 
         },
         memes: async () => {
-            return Meme.find().populate('comments').populate('likes'); 
+            return Meme.find()
         },
         meme: async (parent, { id }) => {
             return Meme.findById(id).populate('comments').populate('likes'); 
@@ -108,6 +108,10 @@ const resolvers = {
             // @TODO: you have lots of duplication of 'You need to be logged in!' string
             // @TODO: Consider refactoring your not logged in message to a variable at the top of the file, then use your variable here instead of these strings
             throw new AuthenticationError('You need to be logged in!');
+        },
+        addMeme: async (parent, { url }, context) => {
+            const newMeme = await Meme.create({ url });
+            return newMeme;
         },
         deleteMeme: async (parent, { memeId }, context) => {
             if (context.user) {
