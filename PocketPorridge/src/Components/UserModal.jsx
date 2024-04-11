@@ -56,14 +56,6 @@ const UserModal = (props) => {
             console.error(error);
         }
 
-        // try {
-        //     const userData = await AuthService.login(formData);
-        //     console.log(userData);
-        //     props.handler(userData)
-        //     handleClose();
-        // } catch (error) {
-        //     console.error('Error Authenticating', error);
-        // }
     };
 
     return (

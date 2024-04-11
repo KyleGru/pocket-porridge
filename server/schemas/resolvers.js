@@ -39,14 +39,14 @@ const resolvers = {
             const user = await User.findOne({ email });
 
             if (!user) {
-                // throw AuthenticationError('No user found with this email address');
+                
                 console.log('No user found with this email address')
             }
 
             const correctPassword = await user.isCorrectPassword(password);
 
             if (!correctPassword) {
-                // throw AuthenticationError('Incorrect credentials');
+                
                 console.log('Incorrect credentials')
             }
 

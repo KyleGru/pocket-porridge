@@ -27,8 +27,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 3
-// import dotenv from 'dotenv'
-// dotenv.config()
+
 
 function App() {
   return (
