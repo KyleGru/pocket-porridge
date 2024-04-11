@@ -1,7 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { ChooseMeme } from './ChooseMeme'
-import { UploadImage } from './UploadMeme';
 import './CreateMemeModal.css'
 import React from 'react';
 
